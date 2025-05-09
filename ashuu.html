@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ᴅᴛᴢ ɪɴᴛᴇʀᴠɪᴇᴡ ꜱɪᴛᴇ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Montserrat:wght@300;400;600;700&family=Audiowide&family=Creepster&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #000000, #1a0000);
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/8LDxHWHK/Queen-Kavee-Md.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+            filter: contrast(1.2) brightness(0.7);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.3);
+            border: 2px solid rgba(255, 0, 0, 0.5);
+            margin: 40px 0;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            animation: float 6s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, rgba(0,0,0,0) 70%);
+            animation: pulse 10s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+            100% { transform: scale(0.9); opacity: 0.3; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(2deg); }
+            50% { transform: translateY(-15px) rotateX(-2deg); }
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 
+                         0 0 20px rgba(255, 0, 0, 0.5),
+                         0 0 30px rgba(255, 0, 0, 0.3);
+            letter-spacing: 2px;
+            transform: translateZ(20px);
+            position: relative;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.7), 0 0 45px rgba(255, 0, 0, 0.5); }
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+            transform: translateZ(10px);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ff3333;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px 15px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(255, 0, 0, 0.5);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2);
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5), inset 0 0 10px rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .skill-select {
+            margin-bottom: 30px;
+        }
+        
+        .skill-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .skill-option {
+            background: rgba(40, 40, 40, 0.8);
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            text-align: center;
+            min-width: 120px;
+            flex-grow: 1;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-option:hover {
+            border-color: rgba(255, 0, 0, 0.7);
+            box-shadow: 0 5px 10px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .skill-option.selected {
+            background: rgba(255, 0, 0, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .coding {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        
+        .web-deploy {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .graphic-design {
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+        }
+        
+        .apk-creator {
+            font-family: 'Audiowide', cursive;
+        }
+        
+        .bot-owner {
+            font-family: 'Arial Black', sans-serif;
+            font-weight: bold;
+        }
+
+        .tools {
+            font-family: 'Impact', sans-serif;
+        }
+        
+        .button-3d {
+            margin-top: 20px;
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 18px 0;
+            background: linear-gradient(145deg, #ff0000, #990000);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 6px 0 #700000,
+                        0 8px 15px rgba(0, 0, 0, 0.3);
+            transform: translateZ(20px);
+        }
+        
+        .button-3d:hover {
+            transform: translateY(-3px) translateZ(30px);
+            box-shadow: 0 9px 0 #700000,
+                        0 12px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+        
+        .button-3d:active {
+            transform: translateY(3px) translateZ(10px);
+            box-shadow: 0 3px 0 #700000,
+                        0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .button-3d::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            width: 30px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .button-3d:hover::before {
+            left: 110%;
+            transition: all 0.5s;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            transform: translateZ(5px);
+        }
+        
+        .powered-by {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #ff0000;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.8),
+                         0 0 15px rgba(255, 0, 0, 0.5);
+            transform: perspective(500px) rotateX(10deg);
+            animation: flicker 3s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 8px rgba(255, 0, 0, 0.8), 0 0 15px rgba(255, 0, 0, 0.5);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        
+        .made-by {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            color: #ff0000;
+            font-style: italic;
+            font-weight: bold;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .error {
+            color: #ff3333;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+            font-weight: 500;
+            animation: fadeIn 0.3s ease-in;
+            text-shadow: 0 0 3px rgba(255, 0, 0, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            color: #00ff00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .success-message h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .skill-options {
+                justify-content: center;
+            }
+            
+            .skill-option {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">ᴅᴛᴢ ɪɴᴛᴇʀᴠɪᴇᴡ ꜱɪᴛᴇ</h1>
+        
+        <form id="interviewForm">
+            <div class="form-group">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error" id="nameError">Please enter your name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">AGE</label>
+                <input type="number" id="age" name="age" min="16" max="100" required>
+                <div class="error" id="ageError">Please enter a valid age (16-100)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact">CONTACT NUMBER</label>
+                <input type="tel" id="contact" name="contact" required>
+                <div class="error" id="contactError">Please enter a valid contact number</div>
+            </div>
+            
+            <div class="skill-select">
+                <label>SKILL</label>
+                <div class="skill-options">
+                    <div class="skill-option coding" data-skill="CODING">CODING</div>
+                    <div class="skill-option web-deploy" data-skill="WEB DEPLOY">WEB DEPLOY</div>
+                    <div class="skill-option graphic-design" data-skill="GRAPHIC DESIGN">GRAPHIC DESIGN</div>
+                    <div class="skill-option apk-creator" data-skill="APK CREATOR">APK CREATOR</div>
+                    <div class="skill-option bot-owner" data-skill="BOT OWNER">BOT OWNER</div>
+                    <div class="skill-option tools" data-skill="TOOLS">TOOLS</div>
+                </div>
+                <input type="hidden" id="selectedSkill" name="skill" required>
+                <div class="error" id="skillError">Please select a skill</div>
+            </div>
+            
+            <button type="submit" class="button-3d">REGISTER NOW</button>
+        </form>
+        
+        <div class="footer">
+            <p class="powered-by">ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ™</p>
+            <p class="made-by">ᴍᴀᴅᴇ ʙʏ ᴄʏʙᴇʀ ʟᴏᴋᴜ ᴀꜱʜᴜᴜ ᴏꜰᴄ</p>
+        </div>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+        <h2>Registration Successful!</h2>
+        <p>Automatically forwarding details to WhatsApp...</p>
+    </div>
+
+    <script>
+        // Skill selection
+        const skillOptions = document.querySelectorAll('.skill-option');
+        const selectedSkillInput = document.getElementById('selectedSkill');
+        
+        skillOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                skillOptions.forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                // Update hidden input value
+                selectedSkillInput.value = this.getAttribute('data-skill');
+                document.getElementById('skillError').style.display = 'none';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('interviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            let isValid = true;
+            
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+            
+            // Age validation
+            const age = document.getElementById('age').value;
+            if (age === '' || age < 16 || age > 100) {
+                document.getElementById('ageError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('ageError').style.display = 'none';
+            }
+            
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            
+            // Contact validation
+            const contact = document.getElementById('contact').value.trim();
+            if (contact === '' || contact.length < 10) {
+                document.getElementById('contactError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('contactError').style.display = 'none';
+            }
+            
+            // Skill validation
+            if (selectedSkillInput.value === '') {
+                document.getElementById('skillError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('skillError').style.display = 'none';
+            }
+            
+            // If valid, auto-forward to WhatsApp
+            if (isValid) {
+                // Save form data to local storage in case user returns
+                localStorage.setItem('dtzFormName', name);
+                localStorage.setItem('dtzFormAge', age);
+                localStorage.setItem('dtzFormEmail', email);
+                localStorage.setItem('dtzFormContact', contact);
+                localStorage.setItem('dtzFormSkill', selectedSkillInput.value);
+                
+                const message = `*New DTZ Interview Registration*
+
+© *Name:* ${name}
+© *Age:* ${age}
+© *Email:* ${email}
+© *Contact:* ${contact}
+© *Skill:* ${selectedSkillInput.value}
+
+> _Registration submitted via DTZ Interview Site_`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/+94707899089?text=${encodedMessage}`;
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Redirect automatically after 1.5 seconds
+                setTimeout(function() {
+                    window.location.href = whatsappUrl;
+                }, 1500);
+            }
+        });
+        
+        // Add interactive effects
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateZ(20px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateZ(10px)';
+            });
+        });
+    </script>
+</body>
+</html>
